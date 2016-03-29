@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8 />
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		
+		<!-- Link font awesome css -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<!-- Link custom css -->
+		<link href='css/style.css' rel='stylesheet' />
+		<style>
+			.map {
+				background: grey;
+			}
+			
+			.region {
+				fill: white;
+			}
+			
+			.countries {
+				fill: black;
+			}
+			
+			.gratLines {
+    			fill: none;
+    			stroke: #999;
+    			stroke-width: 1px;
+			}
+			
+			.gratBackground {
+    			fill: #D5E3FF;
+			}
+		</style>
+	
+	</head>
+<body>
+	
+	
+	
+	
+
+	<!-- Link d3 -->
+	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<!-- Link queue js -->
+	<script src="https://d3js.org/d3-queue.v2.min.js"></script>
+	<!-- link topojson -->
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<!-- link custom js -->
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	<script>
+		// beging script when window loads
+		window.onload = setMap();
+
+
+		// set up choropleth map
+		function setMap(){
+    		//use queue.js to parallelize asynchronous data loading
+    		var q = d3_queue.queue();
+    		
+    		// map frame dimensions
+    		var width = 960;
+    		var height = 460;
+    		
+    		//create new svg container for the map
+    		var map = d3.select("body")
+        		.append("svg")
+        		.attr("class", "map")
+        		.attr("width", width)
+        		.attr("height", height);
+    		
+    		//create Albers equal area conic projection centered on united states
+    		var projection = d3.geo.albersUsa()
+        		//.center([-89, 46])
+        		//.rotate([100, -20, -5])
+        		//.parallels([43, 62])
+        		.scale(900)
+        		.translate([width / 2, height / 2]);
+        	
+        	// create path generator
+        	var path = d3.geo.path()
+        		.projection(projection);
+    		
+    		
+    		q.defer(d3.csv, "data/state_migration_outflow.csv") //load attributes from csv
+        		.defer(d3.json, "data/states_Natural.json") //load background spatial data
+        		.await(callback);
+
+    		function callback(error, csvData, states){
+    			//create graticule generator
+        		var graticule = d3.geo.graticule()
+            		.step([5, 5]); //place graticule lines every 5 degrees of longitude and latitude
+            	
+            	/*
+            	 //create graticule background
+        		var gratBackground = map.append("path")
+            		.datum(graticule.outline()) //bind graticule background
+            		.attr("class", "gratBackground") //assign class for styling
+            		.attr("d", path) //project graticule
+            	*/
+            		
+            	/*
+            	//create graticule lines    
+        		var gratLines = map.selectAll(".gratLines") //select graticule elements that will be created
+            		.data(graticule.lines()) //bind graticule lines to each element to be created
+            		.enter() //create an element for each datum
+            		.append("path") //append each element to the svg as a path element
+            		.attr("class", "gratLines") //assign class for styling
+            		.attr("d", path); //project graticule lines
+            	*/
+            
+        		//translate json data
+        		var stateBounds = topojson.feature(states, states.objects.states_Natural);
+        		var indvState = topojson.feature(states, states.objects.states_Natural).features;
+        		
+        		var countries = map.append("path")
+            		.datum(stateBounds)
+            		.attr("class", "states")
+            		.attr("d", path);	
+            	
+            	var regions = map.selectAll(".regions")
+            		.data(indvState)
+            		.enter()
+            		.append("path")
+            		.attr("class", "region")
+            		.attr("d", path);
+    		};
+		};
+	</script>
+	
+	
+	
+</body>
+</html>
