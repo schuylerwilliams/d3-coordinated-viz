@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8 />
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		
+		<!-- Link custom css -->
+		<link href='css/style.css' rel='stylesheet' />
+	
+	</head>
+<body>
+	
+	
+	<div id="intro">
+		<h1 style="color:black; text-align:center;">Where Are We Going?</h1>
+		<hr></hr>
+		<p style="color:black; text-align:center;">The map - depicting data from Individual income tax returns filed with the IRS - approximates the number of residents leaving a state and which state they moved to. Each value is a percentage of the total people moving from the selected state. Lighter shades indicate low percentages, while darker shades indicate higher percentages. Red indicates a zero value.</p>
+		<p style="color:black; text-align:center;">Hover over the chart or the map to retrieve percentages. Click a state, bar, or choose from the dropdown in the top left corner to update the data to outflows from the selected state.</p>
+	</div>
+	
+	
+	
+	<div id="chartContainer"></div>
+	
+	
+
+	<!-- Link d3 -->
+	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<!-- Link queue js -->
+	<script src="https://d3js.org/d3-queue.v2.min.js"></script>
+	<!-- link topojson -->
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	
+	<!-- link custom js -->
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	
+	
+</body>
+</html>

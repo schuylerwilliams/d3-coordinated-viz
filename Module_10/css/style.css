@@ -1,0 +1,181 @@
+
+
+body { 
+	margin:0; 
+	padding:0;
+	background: white;
+}
+
+.map {
+	margin: 10px 0 0 20px;
+    background: white;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+			
+.chart {
+	background: white;
+    float: right;
+    margin: 10px 20px 0 0;
+    float: right;
+    margin: 7px 20px 0 0;
+	position:absolute;
+    right:0;
+    top:0px;
+}
+			
+.regions {
+    stroke: #000;
+    stroke-width: 0.5px;
+    stroke-linecap: round;
+}
+			
+.numbers {
+    fill: white;
+    font-family: sans-serif;
+}
+			
+.chartTitle {
+    font-family: sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.chartBackground {
+    fill: white;
+}
+
+.chartFrame {
+    fill: none;
+    stroke: #999;
+    stroke-width: 0px;
+    shape-rendering: crispEdges;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #999;
+    stroke-width: 1px;
+	shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 0.8em;
+    fill: #999;
+}
+			
+dropdown {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    z-index: 10;
+    font-family: sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 2px;
+    border: 1px solid #999;
+    box-shadow: 2px 2px 4px #999;
+    z-index: 200;
+}
+
+option {
+    font-weight: normal;
+}
+			
+.infolabel {
+	visibility: hidden;
+    position: absolute;
+    height: auto;
+    min-width: auto;
+    color: #fff;
+    background-color: #000;
+    border: solid thin #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    z-index: 200;
+}
+
+#intro {
+	position:absolute;
+	width:53%; 
+	height: 200px;
+	top:0;
+	left:0;
+	background:white;
+	z-index:-10;
+}
+
+#chartContainer {
+	position:absolute;
+	width:45%;
+	height: 70%;
+	top:0;
+	right:0;
+	background:white;
+	z-index: 100;
+}
+
+hr {
+	width: 70%;
+}
+
+#Alaska,
+#Alabama,
+#Arkansas,
+#Arizona,
+#California,
+#Colorado,
+#Connecticut,
+#Delaware,
+#Florida,
+#Georgia,
+#Hawaii,
+#Iowa,
+#Idaho,
+#Illinois,
+#Indiana,
+#Kansas,
+#Kentucky,
+#Louisiana,
+#Massachusetts,
+#Maryland,
+#Maine,
+#Michigan,
+#Minnesota,
+#Missouri,
+#Mississippi,
+#Montana,
+#NorthCarolina,
+#NorthDakota,
+#Nebraska,
+#NewHampshire,
+#NewJersey,
+#NewMexico,
+#Nevada,
+#NewYork,
+#Ohio,
+#Oklahoma,
+#Oregon,
+#Pennsylvania,
+#RhodeIsland,
+#SouthCarolina,
+#SouthDakota,
+#Tennessee,
+#Texas,
+#Utah,
+#Virginia,
+#Vermont,
+#Washington,
+#Wisconsin,
+#WestVirginia,
+#Wyoming {
+	cursor: pointer;
+}
+
+
+
